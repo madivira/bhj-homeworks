@@ -81,12 +81,20 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    const result = new Array();//массив для результата
+
+    for (let i = 0; i < this.input.length; i++){
+    
+      let inputText = this.input[i].text;
+
+      if(inputText.includes(text)) {
+        result.push({
+          text: this.input[i].text,
+          value: String(i)
+        });        
+      }      
+    };
+    return result;
   }
 }
 
