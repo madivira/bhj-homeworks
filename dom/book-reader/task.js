@@ -27,8 +27,6 @@ fontSize.forEach(element => element.onclick = function () {
     return false;
 });
 
-
-
 text.forEach(element => element.onclick = function () {
     clear(text,"color_active");
 
@@ -45,7 +43,7 @@ text.forEach(element => element.onclick = function () {
 
 background.forEach(element => element.onclick = function () {
     clear(background,"color_active");
-    
+
     element.classList.add("color_active");
 
     book.classList.remove("book_bg-gray", "book_bg-black");

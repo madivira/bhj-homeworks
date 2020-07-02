@@ -38,20 +38,19 @@ add.forEach(element => {
         
         elementAdd.innerHTML = `<div class="cart__product-count">${product.textContent}</div>`;
         elementAdd.insertAdjacentElement('afterbegin', parentEl.querySelector('img').cloneNode(false));
+        elementAdd.querySelector('img').className = "cart__product-image";//изменить класс у добавленного изображения
 
         if(products.querySelector(".cart__product")){//если элемент добавляется не первым в корзину
-
-            for (let element of products.querySelectorAll(".cart__product")){
+            for (let element of Array.from(products.querySelectorAll(".cart__product"))){//рабочий вариант, но добавляет новый элемент в конец
                 if (element.dataset.id == elementAdd.dataset.id) {// если найден такой эл то заменяем его новым
-                    
                     elementAdd.querySelector('.cart__product-count').textContent = Number(elementAdd.querySelector('.cart__product-count').textContent) + Number(element.querySelector('.cart__product-count').textContent)
+                    
                     element.replaceWith(elementAdd);
                 } else {
                     products.insertAdjacentElement('beforeend',elementAdd);//если не найден, то добавляем новый
+                    
                 }
-            }
-            
-            console.log('второй');
+            } 
         } else {//если добавляется первый элемент
             products.insertAdjacentElement('beforeend',elementAdd);
         }
